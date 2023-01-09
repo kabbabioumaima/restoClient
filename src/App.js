@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy, Component } from "react";
+import { Route, Routes, BrowserRouter, Router } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import './assets/style/theme.css'
+import './assets/style/style.css'
+import './assets/style/custom.css'
+import './assets/style/main.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import Acceuil from "./components/Acceuil";
+import RestaurantsList from "./components/RestaurantsList";
+import Navbar from "./components/sidebar";
+
+
+class App extends Component {
+  render() {
+    return (
+//background-image: url("../images/restaurant.jpg");
+      <div className="page-wrapper overflow-auto chiller-theme toggled">
+        <a id="show-sidebar" className="btn btn-sm btn-dark" href="#"> <i className="fas fa-bars"></i></a>
+        <Navbar></Navbar>
+        <main className="container mt-3">
+            <div className=" container-fluid">
+              <Routes>
+                <Route path="/market" element={<Acceuil />} />
+                <Route path="/market/list" element={<RestaurantsList />} />
+              </Routes>
+            </div>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
